@@ -49,23 +49,21 @@
         <li><a href="/pages/contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i>Contact</a></li>
       </ul>
     </aside>
-    
-    <div class="container grey-text">
-      <h5 class="center">Contact</h5>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate,
-        culpa! Ducimus libero quia consectetur nihil quam dolore, inventore
-        consequatur officiis explicabo tenetur asperiores exercitationem harum
-        itaque, dolorum, labore nisi doloribus.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
-        suscipit corporis aspernatur commodi expedita, quod consequuntur
-        doloribus velit sequi fuga?
-      </p>
-    </div>
 
-    <script src="/js/materialize.min.js"></script>
-    <script src="/js/ui.js"></script>
+    <main class="container" style="margin-top: 40px;">
+        <h4 class="center">Your Profile</h4>
+        <div class="card-panel">
+            <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+
+            <div class="center">
+                <button id="logout-btn" class="btn red">Logout</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="./js/materialize.min.js"></script>
+    <script type="module" src="./js/ui.js"></script>
+    <script type="module" src="./js/firebaseDB.js"></script>
   </body>
 </html>
