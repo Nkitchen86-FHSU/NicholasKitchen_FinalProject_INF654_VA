@@ -1,7 +1,7 @@
-importScripts("https://www.gstatic.com/firebase/12.5.0/firebase-app-compat.js");
-importScripts("https://www.gstatic.com/firebase/12.5.0/firebase-messaging-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/12.5.0/firebase-messaging-compat.js");
 
-addItemToFirebase.initializeApp({
+firebase.initializeApp({
   apiKey: "AIzaSyBYKM_V8HbQdlIFNeV3gnj5674c9KJaRK4",
   authDomain: "inventorymanager-fde68.firebaseapp.com",
   projectId: "inventorymanager-fde68",
