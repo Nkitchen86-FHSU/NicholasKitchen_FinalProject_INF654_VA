@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error fetching user details: ", error);
             }
         } else {
-            window.location.href = "./pages/auth.html";
+            window.location.href = "/pages/auth.html";
         }
     });
 });

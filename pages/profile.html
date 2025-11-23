@@ -33,7 +33,6 @@
             <li><a href="/" class="waves-effect white-text">Home</a></li>
             <li><a href="./about.html" class="waves-effect white-text">About</a></li>
             <li><a href="./contact.html" class="waves-effect white-text">Contact</a></li>
-            <li><a href="#" id="logout-btn" class="waves-effect white-text" style="display: none;">Logout</a></li>
             <li><a href="./profile.html" class="waves-effect white-text"><i class=material-icons>person</i></a></li>
           </ul>
         </div>
@@ -52,7 +51,6 @@
         <li id="side-login" style="display:none"><a href="./auth.html" class="waves-effect grey-text text-darken-4">Sign In</a></li>
         <li><div class="divider"></div></li>
         <li><a href="./contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i>Contact</a></li>
-        <li><a href="#" id="logout-btn" class="waves-effect grey-text text-darken-4" style="display: none;">Logout</a></li>
         <li><a href="./profile.html" class="waves-effect grey-text text-darken-4"><i class=material-icons>person</i></a></li>
       </ul>
     </aside>
@@ -64,12 +62,13 @@
             <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
 
             <div class="center">
-                <button id="logout-btn" class="btn red">Logout</button>
+                <button id="logout-btn" class="btn">Logout</button>
             </div>
         </div>
     </main>
 
     <script src="../js/materialize.min.js"></script>
     <script type="module" src="../js/profile.js"></script>
+    <script type="module" src="../js/authUI.js"></script>
   </body>
 </html>

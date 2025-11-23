@@ -69,10 +69,26 @@ onAuthStateChanged(auth, (user) => {
 // Logout functionality
 logoutLink?.addEventListener("click", async () => {
     await signOut(auth);
-    window.location.href = "./pages/auth.html";
+    window.location.href = "/pages/auth.html";
 });
 
 sideLogoutLink?.addEventListener("click", async () => {
     await signOut(auth);
-    window.location.href = "./pages/auth.html";
+    window.location.href = "/pages/auth.html";
 })
+
+// Logout functionality for profile page
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", async () => {
+            try {
+                await signOut(auth);
+                M.toast({ html: "Logout successful!" });
+                window.location.href = "/pages/auth.html"
+            } catch (error) {
+                M.toast({ html: error.message });
+            }
+        });
+    }
+});

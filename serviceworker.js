@@ -23,6 +23,7 @@ const ASSETS_TO_CACHE = [
   "/css/materialize.min.css",
   "/js/materialize.min.js",
   "/js/ui.js",
+  "/js/authUI.js",
   "/img/icons/inventory.png",
   "/img/icons/icon-192x192.png",
   "/img/icons/icon-512x512.png",
