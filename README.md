@@ -1,14 +1,14 @@
 ### INF654 - Mobile Web Development
 ### Nicholas Kitchen
-### Implement Firebase and IndexedDB
+### Final Project
 
 # Project Title
  
-Implement Firebase and IndexedDB - Inventory Management
+Final Project - Inventory Management
  
 ## Description
  
-This program manages the inventory of the user. The user can add, modify, and delete items whether they are online or offline. The user can sort the list A-Z and also filter items by category.
+This program manages the inventory of the user. The user must signup with a name, email, and password. The user can add, modify, and delete items whether they are online or offline. The user can sort the list A-Z and also filter items by category.
 
 ### Firebase and IndexedDB Functionality
 The application will attempt to store and update items in Firebase. If online connection is not available, then items will be stored in the IndexedDB until connection is restored.
