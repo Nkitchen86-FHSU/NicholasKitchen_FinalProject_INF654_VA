@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     signInBtn.addEventListener("click", async () => {
-        const email = document.getElementById("sign-up-email").value;
-        const password = document.getElementById("sign-up-password").value;
+        const email = document.getElementById("sign-in-email").value;
+        const password = document.getElementById("sign-in-password").value;
 
         try {
             await signInWithEmailAndPassword(auth, email, password);

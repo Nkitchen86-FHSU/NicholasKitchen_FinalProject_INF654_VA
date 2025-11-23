@@ -5,6 +5,7 @@ import {
   deleteItemFromFirebase,
   updateItemInFirebase,
 } from "./firebaseDB.js";
+import { auth } from "./firebaseConfig.js";
 
 // --- Constants ---
 const STORAGE_THRESHOLD = 0.8;
@@ -106,6 +107,7 @@ export async function syncItems() {
         let savedItem = null;
         if (item.id.startsWith("temp-")) {
           savedItem = await addItemToFirebase({
+            owner: auth.currentUser?.uid || null,
             name: item.name,
             quantity: item.quantity,
             category: item.category,
@@ -395,7 +397,10 @@ async function adjustQuantity(id, delta) {
 
   if (isOnline()) {
     try {
-      await updateItemInFirebase(id, { quantity: newQty });
+      await updateItemInFirebase(id, { 
+        quantity: newQty,
+        owner: auth.currentUser?.uid || null
+      });
       item.synced = true;
     } catch (error) {
       console.error("Error updating Firebase quantity:", error);
@@ -431,6 +436,7 @@ addItemButton.addEventListener("click", async () => {
   // Prepare the item data
   const itemId = itemIdInput.value; // If editing, this will have a value
   const itemData = {
+    owner: auth.currentUser?.uid || null,
     name: nameInput.value,
     quantity: quantityInput.value,
     category: categoryInput.value,

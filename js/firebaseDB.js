@@ -1,5 +1,5 @@
 // Import the functions you need from the Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -8,7 +8,11 @@ import {
   deleteDoc,
   updateDoc,
   doc,
-} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+  query,
+  where,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+import { auth } from "./firebaseConfig.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -29,24 +33,28 @@ const db = getFirestore(app);
 // Add a item
 export async function addItemToFirebase(item) {
   try {
-    const docRef = await addDoc(collection(db, "inventory"), item);
-    return { id: docRef.id, ...item };
+    const docRef = await addDoc(collection(db, "inventory"), {
+      ...item,
+      owner: item.owner,
+      createdAt: serverTimestamp()
+    });
+    return { id: docRef.id };
   } catch (e) {
     console.error("Error adding item: ", e);
   }
 }
 
 export async function getItemsFromFirebase() {
-  const items = [];
+  const user = auth.currentUser;
+  if (!user) return [];
+
   try {
-    const querySnapshot = await getDocs(collection(db, "inventory"));
-    querySnapshot.forEach((doc) => {
-      items.push({ id: doc.id, ...doc.data() });
-    });
+    const querySnapshot = await getDocs(query(collection(db,"inventory"), where("owner", "==", user.uid)));
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
   } catch (e) {
     console.error("Error retrieving items: ", e);
   }
-  return items;
+  return [];
 }
 
 export async function deleteItemFromFirebase(id) {
