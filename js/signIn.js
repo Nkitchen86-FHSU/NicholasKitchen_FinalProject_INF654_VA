@@ -41,4 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
             M.toast({ html: error.message });
         }
     });
+
+    signInBtn.addEventListener("click", async () => {
+        const email = document.getElementById("sign-up-email").value;
+        const password = document.getElementById("sign-up-password").value;
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            M.toast({ html: "Sign-in successful!" });
+            window.location.href = "/";
+        } catch (error) {
+            M.toast({ html: error.message });
+        }
+    });
 });

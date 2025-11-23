@@ -1,6 +1,6 @@
 import { auth } from "./firebaseConfig.js";
 import {onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-import { loadTasks, syncTasks } from "./ui.js";
+import { loadItems, syncItems } from "./ui.js";
 
 export let currentUser = null;
 
@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (logoutBtn) {
                 logoutBtn.style.display = "block";
             }
-            loadTasks();
-            syncTasks();
+            loadItems();
+            syncItems();
         } else {
             console.log("No user is currently signed in.");
             window.location.href = "./pages/auth.html";

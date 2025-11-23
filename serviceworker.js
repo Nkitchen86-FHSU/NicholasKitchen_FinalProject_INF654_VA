@@ -1,3 +1,16 @@
+importScripts("https://www.gstatic.com/firebase/12.5.0/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebase/12.5.0/firebase-messaging-compat.js");
+
+addItemToFirebase.initializeApp({
+  apiKey: "AIzaSyBYKM_V8HbQdlIFNeV3gnj5674c9KJaRK4",
+  authDomain: "inventorymanager-fde68.firebaseapp.com",
+  projectId: "inventorymanager-fde68",
+  storageBucket: "inventorymanager-fde68.firebasestorage.app",
+  messagingSenderId: "511912640439",
+  appId: "1:511912640439:web:8f108887f87b0be83cb232",
+  measurementId: "G-JXEZCHXZ89"
+});
+
 const CACHE_NAME = "inventory-manager-v1";
 
 const ASSETS_TO_CACHE = [
@@ -5,10 +18,11 @@ const ASSETS_TO_CACHE = [
   "/index.html",
   "/pages/about.html",
   "/pages/contact.html",
+  "/pages/profile.html",
+  "/pages/auth.html",
   "/css/materialize.min.css",
   "/js/materialize.min.js",
   "/js/ui.js",
-  "/js/firebaseDB.js",
   "/img/icons/inventory.png",
   "/img/icons/icon-192x192.png",
   "/img/icons/icon-512x512.png",
@@ -19,12 +33,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Service worker: caching files");
-      return cache.addAll([
-        ASSETS_TO_CACHE,
-        "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js",
-        "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js",
-        "https://unpkg.com/idb?module"
-      ]);
+      return cache.addAll(ASSETS_TO_CACHE);
     })
   );
 });
@@ -72,3 +81,10 @@ self.addEventListener("fetch", (event) => {
     })()
   );
 });
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "FCM_TOKEN") {
+    const fcmToken = event.data.token;
+    console.log("Reveived FCM Token in service worker:", fcmToken);
+  }
+})

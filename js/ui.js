@@ -85,7 +85,7 @@ async function firebaseReady(maxRetries = 5, delay = 1000) {
 }
 
 // Sync unsynced items from IndexedDB to Firebase
-async function syncItems() {
+export async function syncItems() {
   if (!isOnline()) return;
 
   const ready = await firebaseReady(5, 1000);
